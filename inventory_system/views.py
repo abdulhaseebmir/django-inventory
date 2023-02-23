@@ -3,8 +3,13 @@ from django.http import HttpResponse
 
 def home_view(request):
     article = Article.objects.get(id=1)
-    html_string = f"""
-    <h2>{article.title}</h2>
-    <p>{article.content}</p>
-    """
+    context = {
+        "id": article.id,
+        "title": article.title,
+        "content": article.content
+    }
+    html_string = """
+    <h2>{title} (id: {id})</h2>
+    <p>{content}</p>
+    """.format(**context)
     return HttpResponse(html_string)
