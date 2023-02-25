@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    {% if article_object %}
+        {{ article_object.title }} - {{ article_object.content }}
+    {% endif %}
+{% endblock %}
