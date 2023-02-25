@@ -3,6 +3,20 @@ from .models import Article
 
 # Create your views here.
 
+def article_search_view(request):
+    query_dict = request.GET
+    try:
+        query = int(query_dict.get("query")) # see also: query_dict["query"]
+    except:
+        query = None
+    article_object = None
+    if query:
+        article_object = Article.objects.get(id=query)
+    context = {
+        "article_object": article_object
+    }
+    return render(request, "articles/search.html", context)
+
 def article_detail_view(request, id=None):
     article_object = None
     if id:
