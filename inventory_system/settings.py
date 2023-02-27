@@ -52,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'inventory_system.urls'
+LOGIN_URL = "/login/"
 
 TEMPLATES = [
     {
