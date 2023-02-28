@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="POST">
+    {% if not created %}    
+    <form method="POST" action=".">
         {% csrf_token %}
-        <br/>
-        <input type="text" name="title" placeholder="Title"><br/><br/>
-        <textarea name="content" cols="30" rows="10" placeholder="Content"></textarea><br/>
+        {{ form.as_p }}
         <button type="submit">Create</button>
     </form>
+    {% else %}
+        <p>Your article was created.</p>
+        <a href="/articles/{{ object.id }}/">{{ object.title }}</a>
+    {% endif %}
 {% endblock %}
